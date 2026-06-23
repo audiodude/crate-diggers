@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Crate Diggers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app"><div class="loading">Loading the crate…</div></div>
+
+    <!-- Order matters: shim (no-op under a real host) → albums data → reducer → app. -->
+    <script src="webxdc-shim.js"></script>
+    <script src="albums.js"></script>
+    <script type="module">
+      import * as game from './game.js';
+      window.CrateGame = game;
+      import('./app.js');
+    </script>
+  </body>
+</html>

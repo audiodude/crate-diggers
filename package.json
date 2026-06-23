@@ -1,0 +1,20 @@
+{
+  "name": "crate-diggers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Crate Diggers — a WebXDC music-taste guessing game for Delta Chat",
+  "scripts": {
+    "build": "node build/fetch-art.mjs",
+    "icon": "node build/make-icon.mjs",
+    "pack": "node build/pack.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "sharp": "^0.33.5"
+  }
+}

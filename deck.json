@@ -1,0 +1,156 @@
+[
+  { "id": "1985-rock",   "year": 1985, "genre": "rock",   "artist": "Dire Straits",            "title": "Brothers in Arms" },
+  { "id": "1985-pop",    "year": 1985, "genre": "pop",    "artist": "Whitney Houston",         "title": "Whitney Houston" },
+  { "id": "1985-hiphop", "year": 1985, "genre": "hiphop", "artist": "Run-DMC",                 "title": "King of Rock" },
+  { "id": "1985-gem",    "year": 1985, "genre": "gem",    "artist": "The Jesus and Mary Chain","title": "Psychocandy" },
+
+  { "id": "1986-rock",   "year": 1986, "genre": "rock",   "artist": "Bon Jovi",                "title": "Slippery When Wet" },
+  { "id": "1986-pop",    "year": 1986, "genre": "pop",    "artist": "Madonna",                 "title": "True Blue" },
+  { "id": "1986-hiphop", "year": 1986, "genre": "hiphop", "artist": "Run-DMC",                 "title": "Raising Hell" },
+  { "id": "1986-gem",    "year": 1986, "genre": "gem",    "artist": "Sonic Youth",             "title": "EVOL" },
+
+  { "id": "1987-rock",   "year": 1987, "genre": "rock",   "artist": "U2",                      "title": "The Joshua Tree" },
+  { "id": "1987-pop",    "year": 1987, "genre": "pop",    "artist": "Michael Jackson",         "title": "Bad" },
+  { "id": "1987-hiphop", "year": 1987, "genre": "hiphop", "artist": "Eric B. & Rakim",         "title": "Paid in Full" },
+  { "id": "1987-gem",    "year": 1987, "genre": "gem",    "artist": "Dinosaur Jr.",            "title": "You're Living All Over Me" },
+
+  { "id": "1988-rock",   "year": 1988, "genre": "rock",   "artist": "Metallica",               "title": "...And Justice for All" },
+  { "id": "1988-pop",    "year": 1988, "genre": "pop",    "artist": "Bobby Brown",             "title": "Don't Be Cruel" },
+  { "id": "1988-hiphop", "year": 1988, "genre": "hiphop", "artist": "Public Enemy",            "title": "It Takes a Nation of Millions to Hold Us Back" },
+  { "id": "1988-gem",    "year": 1988, "genre": "gem",    "artist": "Pixies",                  "title": "Surfer Rosa" },
+
+  { "id": "1989-rock",   "year": 1989, "genre": "rock",   "artist": "Tom Petty",               "title": "Full Moon Fever" },
+  { "id": "1989-pop",    "year": 1989, "genre": "pop",    "artist": "Madonna",                 "title": "Like a Prayer" },
+  { "id": "1989-hiphop", "year": 1989, "genre": "hiphop", "artist": "De La Soul",              "title": "3 Feet High and Rising" },
+  { "id": "1989-gem",    "year": 1989, "genre": "gem",    "artist": "The Stone Roses",         "title": "The Stone Roses" },
+
+  { "id": "1990-rock",   "year": 1990, "genre": "rock",   "artist": "Depeche Mode",            "title": "Violator" },
+  { "id": "1990-pop",    "year": 1990, "genre": "pop",    "artist": "Mariah Carey",            "title": "Mariah Carey" },
+  { "id": "1990-hiphop", "year": 1990, "genre": "hiphop", "artist": "MC Hammer",               "title": "Please Hammer, Don't Hurt 'Em" },
+  { "id": "1990-gem",    "year": 1990, "genre": "gem",    "artist": "The La's",                "title": "The La's" },
+
+  { "id": "1991-rock",   "year": 1991, "genre": "rock",   "artist": "Nirvana",                 "title": "Nevermind" },
+  { "id": "1991-pop",    "year": 1991, "genre": "pop",    "artist": "Michael Jackson",         "title": "Dangerous" },
+  { "id": "1991-hiphop", "year": 1991, "genre": "hiphop", "artist": "A Tribe Called Quest",    "title": "The Low End Theory" },
+  { "id": "1991-gem",    "year": 1991, "genre": "gem",    "artist": "Slint",                   "title": "Spiderland" },
+
+  { "id": "1992-rock",   "year": 1992, "genre": "rock",   "artist": "Rage Against the Machine","title": "Rage Against the Machine" },
+  { "id": "1992-pop",    "year": 1992, "genre": "pop",    "artist": "Whitney Houston",         "title": "The Bodyguard" },
+  { "id": "1992-hiphop", "year": 1992, "genre": "hiphop", "artist": "Dr. Dre",                 "title": "The Chronic" },
+  { "id": "1992-gem",    "year": 1992, "genre": "gem",    "artist": "Pavement",                "title": "Slanted and Enchanted" },
+
+  { "id": "1993-rock",   "year": 1993, "genre": "rock",   "artist": "Pearl Jam",               "title": "Vs." },
+  { "id": "1993-pop",    "year": 1993, "genre": "pop",    "artist": "Mariah Carey",            "title": "Music Box" },
+  { "id": "1993-hiphop", "year": 1993, "genre": "hiphop", "artist": "Snoop Doggy Dogg",        "title": "Doggystyle" },
+  { "id": "1993-gem",    "year": 1993, "genre": "gem",    "artist": "Liz Phair",               "title": "Exile in Guyville" },
+
+  { "id": "1994-rock",   "year": 1994, "genre": "rock",   "artist": "Green Day",               "title": "Dookie" },
+  { "id": "1994-pop",    "year": 1994, "genre": "pop",    "artist": "Boyz II Men",             "title": "II" },
+  { "id": "1994-hiphop", "year": 1994, "genre": "hiphop", "artist": "The Notorious B.I.G.",    "title": "Ready to Die" },
+  { "id": "1994-gem",    "year": 1994, "genre": "gem",    "artist": "Jeff Buckley",            "title": "Grace" },
+
+  { "id": "1995-rock",   "year": 1995, "genre": "rock",   "artist": "The Smashing Pumpkins",   "title": "Mellon Collie and the Infinite Sadness" },
+  { "id": "1995-pop",    "year": 1995, "genre": "pop",    "artist": "Alanis Morissette",       "title": "Jagged Little Pill" },
+  { "id": "1995-hiphop", "year": 1995, "genre": "hiphop", "artist": "2Pac",                    "title": "Me Against the World" },
+  { "id": "1995-gem",    "year": 1995, "genre": "gem",    "artist": "Elliott Smith",           "title": "Elliott Smith" },
+
+  { "id": "1996-rock",   "year": 1996, "genre": "rock",   "artist": "Beck",                    "title": "Odelay" },
+  { "id": "1996-pop",    "year": 1996, "genre": "pop",    "artist": "Spice Girls",             "title": "Spice" },
+  { "id": "1996-hiphop", "year": 1996, "genre": "hiphop", "artist": "2Pac",                    "title": "All Eyez on Me" },
+  { "id": "1996-gem",    "year": 1996, "genre": "gem",    "artist": "DJ Shadow",               "title": "Endtroducing....." },
+
+  { "id": "1997-rock",   "year": 1997, "genre": "rock",   "artist": "Radiohead",               "title": "OK Computer" },
+  { "id": "1997-pop",    "year": 1997, "genre": "pop",    "artist": "Backstreet Boys",         "title": "Backstreet Boys" },
+  { "id": "1997-hiphop", "year": 1997, "genre": "hiphop", "artist": "The Notorious B.I.G.",    "title": "Life After Death" },
+  { "id": "1997-gem",    "year": 1997, "genre": "gem",    "artist": "Modest Mouse",            "title": "The Lonesome Crowded West" },
+
+  { "id": "1998-rock",   "year": 1998, "genre": "rock",   "artist": "Hole",                    "title": "Celebrity Skin" },
+  { "id": "1998-pop",    "year": 1998, "genre": "pop",    "artist": "Madonna",                 "title": "Ray of Light" },
+  { "id": "1998-hiphop", "year": 1998, "genre": "hiphop", "artist": "Lauryn Hill",             "title": "The Miseducation of Lauryn Hill" },
+  { "id": "1998-gem",    "year": 1998, "genre": "gem",    "artist": "Neutral Milk Hotel",      "title": "In the Aeroplane Over the Sea" },
+
+  { "id": "1999-rock",   "year": 1999, "genre": "rock",   "artist": "Red Hot Chili Peppers",   "title": "Californication" },
+  { "id": "1999-pop",    "year": 1999, "genre": "pop",    "artist": "Britney Spears",          "title": "...Baby One More Time" },
+  { "id": "1999-hiphop", "year": 1999, "genre": "hiphop", "artist": "Dr. Dre",                 "title": "2001" },
+  { "id": "1999-gem",    "year": 1999, "genre": "gem",    "artist": "The Magnetic Fields",     "title": "69 Love Songs" },
+
+  { "id": "2000-rock",   "year": 2000, "genre": "rock",   "artist": "Linkin Park",             "title": "Hybrid Theory" },
+  { "id": "2000-pop",    "year": 2000, "genre": "pop",    "artist": "*NSYNC",                  "title": "No Strings Attached" },
+  { "id": "2000-hiphop", "year": 2000, "genre": "hiphop", "artist": "Eminem",                  "title": "The Marshall Mathers LP" },
+  { "id": "2000-gem",    "year": 2000, "genre": "gem",    "artist": "Deltron 3030",            "title": "Deltron 3030" },
+
+  { "id": "2001-rock",   "year": 2001, "genre": "rock",   "artist": "The Strokes",             "title": "Is This It" },
+  { "id": "2001-pop",    "year": 2001, "genre": "pop",    "artist": "Britney Spears",          "title": "Britney" },
+  { "id": "2001-hiphop", "year": 2001, "genre": "hiphop", "artist": "Jay-Z",                   "title": "The Blueprint" },
+  { "id": "2001-gem",    "year": 2001, "genre": "gem",    "artist": "The Microphones",         "title": "The Glow Pt. 2" },
+
+  { "id": "2002-rock",   "year": 2002, "genre": "rock",   "artist": "Coldplay",                "title": "A Rush of Blood to the Head" },
+  { "id": "2002-pop",    "year": 2002, "genre": "pop",    "artist": "Avril Lavigne",           "title": "Let Go" },
+  { "id": "2002-hiphop", "year": 2002, "genre": "hiphop", "artist": "Eminem",                  "title": "The Eminem Show" },
+  { "id": "2002-gem",    "year": 2002, "genre": "gem",    "artist": "Interpol",                "title": "Turn on the Bright Lights" },
+
+  { "id": "2003-rock",   "year": 2003, "genre": "rock",   "artist": "The White Stripes",       "title": "Elephant" },
+  { "id": "2003-pop",    "year": 2003, "genre": "pop",    "artist": "Beyoncé",                 "title": "Dangerously in Love" },
+  { "id": "2003-hiphop", "year": 2003, "genre": "hiphop", "artist": "50 Cent",                 "title": "Get Rich or Die Tryin'" },
+  { "id": "2003-gem",    "year": 2003, "genre": "gem",    "artist": "The Postal Service",      "title": "Give Up" },
+
+  { "id": "2004-rock",   "year": 2004, "genre": "rock",   "artist": "Green Day",               "title": "American Idiot" },
+  { "id": "2004-pop",    "year": 2004, "genre": "pop",    "artist": "Usher",                   "title": "Confessions" },
+  { "id": "2004-hiphop", "year": 2004, "genre": "hiphop", "artist": "Kanye West",              "title": "The College Dropout" },
+  { "id": "2004-gem",    "year": 2004, "genre": "gem",    "artist": "Arcade Fire",             "title": "Funeral" },
+
+  { "id": "2005-rock",   "year": 2005, "genre": "rock",   "artist": "Coldplay",                "title": "X&Y" },
+  { "id": "2005-pop",    "year": 2005, "genre": "pop",    "artist": "Mariah Carey",            "title": "The Emancipation of Mimi" },
+  { "id": "2005-hiphop", "year": 2005, "genre": "hiphop", "artist": "50 Cent",                 "title": "The Massacre" },
+  { "id": "2005-gem",    "year": 2005, "genre": "gem",    "artist": "Sufjan Stevens",          "title": "Illinois" },
+
+  { "id": "2006-rock",   "year": 2006, "genre": "rock",   "artist": "Red Hot Chili Peppers",   "title": "Stadium Arcadium" },
+  { "id": "2006-pop",    "year": 2006, "genre": "pop",    "artist": "Justin Timberlake",       "title": "FutureSex/LoveSounds" },
+  { "id": "2006-hiphop", "year": 2006, "genre": "hiphop", "artist": "T.I.",                    "title": "King" },
+  { "id": "2006-gem",    "year": 2006, "genre": "gem",    "artist": "Joanna Newsom",           "title": "Ys" },
+
+  { "id": "2007-rock",   "year": 2007, "genre": "rock",   "artist": "Radiohead",               "title": "In Rainbows" },
+  { "id": "2007-pop",    "year": 2007, "genre": "pop",    "artist": "Rihanna",                 "title": "Good Girl Gone Bad" },
+  { "id": "2007-hiphop", "year": 2007, "genre": "hiphop", "artist": "Kanye West",              "title": "Graduation" },
+  { "id": "2007-gem",    "year": 2007, "genre": "gem",    "artist": "Panda Bear",              "title": "Person Pitch" },
+
+  { "id": "2008-rock",   "year": 2008, "genre": "rock",   "artist": "Coldplay",                "title": "Viva la Vida or Death and All His Friends" },
+  { "id": "2008-pop",    "year": 2008, "genre": "pop",    "artist": "Lady Gaga",               "title": "The Fame" },
+  { "id": "2008-hiphop", "year": 2008, "genre": "hiphop", "artist": "Lil Wayne",               "title": "Tha Carter III" },
+  { "id": "2008-gem",    "year": 2008, "genre": "gem",    "artist": "Fleet Foxes",             "title": "Fleet Foxes" },
+
+  { "id": "2009-rock",   "year": 2009, "genre": "rock",   "artist": "Muse",                    "title": "The Resistance" },
+  { "id": "2009-pop",    "year": 2009, "genre": "pop",    "artist": "Taylor Swift",            "title": "Fearless" },
+  { "id": "2009-hiphop", "year": 2009, "genre": "hiphop", "artist": "Jay-Z",                   "title": "The Blueprint 3" },
+  { "id": "2009-gem",    "year": 2009, "genre": "gem",    "artist": "Animal Collective",       "title": "Merriweather Post Pavilion" },
+
+  { "id": "2010-rock",   "year": 2010, "genre": "rock",   "artist": "Arcade Fire",             "title": "The Suburbs" },
+  { "id": "2010-pop",    "year": 2010, "genre": "pop",    "artist": "Katy Perry",              "title": "Teenage Dream" },
+  { "id": "2010-hiphop", "year": 2010, "genre": "hiphop", "artist": "Eminem",                  "title": "Recovery" },
+  { "id": "2010-gem",    "year": 2010, "genre": "gem",    "artist": "Beach House",             "title": "Teen Dream" },
+
+  { "id": "2011-rock",   "year": 2011, "genre": "rock",   "artist": "Foo Fighters",            "title": "Wasting Light" },
+  { "id": "2011-pop",    "year": 2011, "genre": "pop",    "artist": "Adele",                   "title": "21" },
+  { "id": "2011-hiphop", "year": 2011, "genre": "hiphop", "artist": "Drake",                   "title": "Take Care" },
+  { "id": "2011-gem",    "year": 2011, "genre": "gem",    "artist": "Destroyer",               "title": "Kaputt" },
+
+  { "id": "2012-rock",   "year": 2012, "genre": "rock",   "artist": "Mumford & Sons",          "title": "Babel" },
+  { "id": "2012-pop",    "year": 2012, "genre": "pop",    "artist": "Taylor Swift",            "title": "Red" },
+  { "id": "2012-hiphop", "year": 2012, "genre": "hiphop", "artist": "Kendrick Lamar",          "title": "good kid, m.A.A.d city" },
+  { "id": "2012-gem",    "year": 2012, "genre": "gem",    "artist": "Tame Impala",             "title": "Lonerism" },
+
+  { "id": "2013-rock",   "year": 2013, "genre": "rock",   "artist": "Arctic Monkeys",          "title": "AM" },
+  { "id": "2013-pop",    "year": 2013, "genre": "pop",    "artist": "Justin Timberlake",       "title": "The 20/20 Experience" },
+  { "id": "2013-hiphop", "year": 2013, "genre": "hiphop", "artist": "Drake",                   "title": "Nothing Was the Same" },
+  { "id": "2013-gem",    "year": 2013, "genre": "gem",    "artist": "Julia Holter",            "title": "Loud City Song" },
+
+  { "id": "2014-rock",   "year": 2014, "genre": "rock",   "artist": "Coldplay",                "title": "Ghost Stories" },
+  { "id": "2014-pop",    "year": 2014, "genre": "pop",    "artist": "Taylor Swift",            "title": "1989" },
+  { "id": "2014-hiphop", "year": 2014, "genre": "hiphop", "artist": "J. Cole",                 "title": "2014 Forest Hills Drive" },
+  { "id": "2014-gem",    "year": 2014, "genre": "gem",    "artist": "Alvvays",                 "title": "Alvvays" },
+
+  { "id": "2015-rock",   "year": 2015, "genre": "rock",   "artist": "Tame Impala",             "title": "Currents" },
+  { "id": "2015-pop",    "year": 2015, "genre": "pop",    "artist": "Adele",                   "title": "25" },
+  { "id": "2015-hiphop", "year": 2015, "genre": "hiphop", "artist": "Kendrick Lamar",          "title": "To Pimp a Butterfly" },
+  { "id": "2015-gem",    "year": 2015, "genre": "gem",    "artist": "Jamie xx",                "title": "In Colour" }
+]

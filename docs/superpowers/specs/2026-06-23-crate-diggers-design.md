@@ -117,25 +117,28 @@ build bakes metadata + artwork into the `.xdc`. It reuses the proven, no-API-key
 path from `/home/tmoney/code/starred/best-albums-headless-astro`:
 
 ```
-deck.json  (124 rows: "Artist — Title", genre slot, year, optional QID override)
+deck.json  (124 rows: artist, title, year, genre slot — all authoritative)
    │
-   ├─▶ resolve QID via Wikidata wbsearchentities        [new, small]
-   │      (rows may pin an explicit QID to disambiguate)
+   ├─▶ iTunes Search API (PRIMARY, no key)              [new, small]
+   │      term="<artist> <title>", entity=album, limit=1
+   │      → artworkUrl100 → upscale to 600x600 → sharp resize ~256px → img/<id>.jpg
+   │      → collectionViewUrl (Apple Music link), collectionId (Apple id)
    │
-   ├─▶ wikidata.mjs: EntityData/<QID>.json              [reused as-is]
-   │      → title (P1448), MBID (P436), release date (P577),
-   │        Spotify id (P2205), Apple Music id (P2281), artist (P175→label)
+   ├─▶ Wikidata (BEST-EFFORT enrich)                    [reused: wikidata.mjs]
+   │      wbsearchentities "<artist> <title>" → QID (rows may pin a QID)
+   │      → EntityData/<QID>.json → Spotify id (P2205)
    │
-   ├─▶ covers.mjs: downloadCover() from Cover Art Archive [reused as-is]
-   │      coverartarchive.org/release-group/<mbid>/front-500
-   │      → resizeThumbnail() via sharp, ~256px JPEG → img/<id>.jpg
+   ├─▶ Cover Art Archive (FALLBACK cover, reused: covers.mjs)
+   │      used only if iTunes returns no usable artwork and an MBID is known
    │
    └─▶ emit albums.json  →  pack into crate-diggers.xdc
 ```
 
+- deck.json is authoritative for **artist / title / year / genre**; iTunes
+  supplies artwork + Apple link, Wikidata supplies the Spotify id.
 - A `User-Agent` header is required by Wikidata and Cover Art Archive.
-- If CAA has no cover for an MBID, fall back to the iTunes Search API artwork
-  (no key) so every album still gets a cover.
+- Spotify falls back to a `open.spotify.com/search` URL when no id resolves, so
+  every album still gets all three listen links.
 - Target bundle size: **~1–2 MB total**.
 
 `albums.json` row shape:
