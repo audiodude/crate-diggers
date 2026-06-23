@@ -35,11 +35,15 @@ npm test         # unit-tests the pure reducer (incl. order-independence)
 npm run pack     # -> crate-diggers.xdc
 ```
 
-- **Artwork + Apple link + year** come from the iTunes Search API (no key).
-- **Spotify id** is enriched from Wikidata; missing ids fall back to search URLs,
-  so every album always has all three listen links.
-- Any album whose art can't be fetched gets a neutral placeholder cover — the
-  build never fails on one bad row.
+- **Artwork + the direct Apple Music link** come from the iTunes Search API (no
+  key), with retry/backoff for its rate limit.
+- Albums iTunes doesn't carry (older indie/rap) fall back to **Cover Art Archive
+  via MusicBrainz**; anything still missing gets a neutral placeholder so the
+  build never fails on one row.
+- **Spotify and YouTube Music** links are search URLs (no reliable public id
+  lookup); Apple is direct. Every album always has all three.
+- The build is **resumable** — covers already fetched are skipped, so if iTunes
+  rate-limits you, just run `npm run build` again until it reports 0 placeholders.
 
 Edit `deck.json` and re-run `npm run build && npm run pack` to change the deck.
 
@@ -89,7 +93,7 @@ locally-held secret pick, and that the listen links open in your browser.
 deck.json            # 124 curated albums (artist, title, year, genre slot)
 build/
   fetch-art.mjs      # deck.json + network -> albums.json + albums.js + img/
-  lib/{itunes,wikidata,covers}.mjs
+  lib/{itunes,musicbrainz,covers}.mjs
   make-icon.mjs      # generates src/icon.png
   pack.mjs           # zips src/ -> crate-diggers.xdc
 src/

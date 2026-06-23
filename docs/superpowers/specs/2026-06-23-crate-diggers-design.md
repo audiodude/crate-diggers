@@ -119,27 +119,32 @@ path from `/home/tmoney/code/starred/best-albums-headless-astro`:
 ```
 deck.json  (124 rows: artist, title, year, genre slot — all authoritative)
    │
-   ├─▶ iTunes Search API (PRIMARY, no key)              [new, small]
-   │      term="<artist> <title>", entity=album, limit=1
-   │      → artworkUrl100 → upscale to 600x600 → sharp resize ~256px → img/<id>.jpg
-   │      → collectionViewUrl (Apple Music link), collectionId (Apple id)
+   ├─▶ iTunes Search API (PRIMARY, no key)
+   │      term variants (full → punctuation-stripped → pre-colon), limit=1,
+   │      with 429/403 backoff
+   │      → artworkUrl100 → upscale 600x600 → sharp resize ~256px → img/<id>.jpg
+   │      → collectionViewUrl (direct Apple Music link)
    │
-   ├─▶ Wikidata (BEST-EFFORT enrich)                    [reused: wikidata.mjs]
-   │      wbsearchentities "<artist> <title>" → QID (rows may pin a QID)
-   │      → EntityData/<QID>.json → Spotify id (P2205)
+   ├─▶ Cover Art Archive via MusicBrainz (FALLBACK cover)
+   │      only when iTunes has no artwork (older indie/rap catalog):
+   │      MB release-group search → MBID → coverartarchive.org/.../front-500
    │
-   ├─▶ Cover Art Archive (FALLBACK cover, reused: covers.mjs)
-   │      used only if iTunes returns no usable artwork and an MBID is known
+   ├─▶ placeholder cover (last resort — build never fails on one bad row)
    │
-   └─▶ emit albums.json  →  pack into crate-diggers.xdc
+   └─▶ emit albums.json (+ _ok resume marker) and albums.js (window.ALBUMS)
+       → pack into crate-diggers.xdc
 ```
 
-- deck.json is authoritative for **artist / title / year / genre**; iTunes
-  supplies artwork + Apple link, Wikidata supplies the Spotify id.
-- A `User-Agent` header is required by Wikidata and Cover Art Archive.
-- Spotify falls back to a `open.spotify.com/search` URL when no id resolves, so
-  every album still gets all three listen links.
-- Target bundle size: **~1–2 MB total**.
+- deck.json is authoritative for **artist / title / year / genre**.
+- **Listen links:** Apple Music is a **direct** link from iTunes; **Spotify and
+  YouTube Music are search URLs** (neither offers a reliable public id lookup,
+  and a search URL is safer than risking a wrong direct link). All three are
+  always present.
+- A `User-Agent` header is required by MusicBrainz + Cover Art Archive.
+- The build is **resumable**: rows with a real cover (`_ok`) are skipped on
+  re-run, so iTunes rate-limiting just means running `npm run build` a few times.
+- Result on first build: **124/124 real covers** (121 iTunes + 3 CAA).
+- Bundle size: **~2.0 MB**.
 
 `albums.json` row shape:
 ```json
@@ -166,10 +171,10 @@ WebXDC forbids network requests but **allows external `<a href>` links**, which
 the host messenger opens in the system browser (with a tap-through). Each album
 carries three precomputed listen links:
 
-- **Spotify** — direct (`open.spotify.com/album/<P2205 id>`) when known.
-- **Apple Music** — direct via P2281 when known, else a `music.apple.com/search`
-  URL built from artist+title.
-- **YouTube Music** — always a `music.youtube.com/search?q=…` URL.
+- **Apple Music** — direct `music.apple.com/...album...` link from iTunes
+  (121/124); the 3 CAA-sourced albums get a `music.apple.com/search` URL.
+- **Spotify** — `open.spotify.com/search/<artist title>` URL.
+- **YouTube Music** — `music.youtube.com/search?q=<artist title>` URL.
 
 Search-URL fallbacks always resolve, so every album gets all three links.
 

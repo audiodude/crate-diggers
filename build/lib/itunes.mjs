@@ -22,12 +22,9 @@ export function buildLinks(row, ids = {}) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Query iTunes for the best album match. Returns
-// { artworkUrl, appleUrl, appleId, year } or null. Retries with backoff on the
-// rate-limit responses (429/403) iTunes returns under bursty load.
-export async function searchItunes(artist, title) {
-  const term = q(`${artist} ${title}`);
-  const url = `https://itunes.apple.com/search?term=${term}&entity=album&limit=1`;
+// One iTunes request with backoff on rate-limit (429/403) responses.
+async function itunesGet(term) {
+  const url = `https://itunes.apple.com/search?term=${q(term)}&entity=album&limit=1`;
   let res;
   for (let attempt = 0; attempt < 5; attempt++) {
     res = await fetch(url, { headers: { 'User-Agent': UA } });
@@ -39,8 +36,34 @@ export async function searchItunes(artist, title) {
     throw new Error(`iTunes HTTP ${res.status}`);
   }
   if (!res.ok) throw new Error(`iTunes HTTP ${res.status} (after retries)`);
-  const json = await res.json();
-  const r = json.results?.[0];
+  return (await res.json()).results?.[0] || null;
+}
+
+// Strip punctuation iTunes search chokes on: leading "...", "*", "&"→"and",
+// trailing parentheticals, stylized casing like "m.A.A.d".
+function cleanTitle(t) {
+  return t
+    .replace(/\(.*?\)/g, ' ')
+    .replace(/&/g, 'and')
+    .replace(/[*.]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Query iTunes for the best album match, trying progressively looser terms.
+// Returns { artworkUrl, appleUrl, appleId, year } or null.
+export async function searchItunes(artist, title) {
+  const terms = [`${artist} ${title}`];
+  const ct = cleanTitle(title);
+  if (ct && ct.toLowerCase() !== title.toLowerCase()) terms.push(`${artist} ${ct}`);
+  terms.push(`${artist} ${title.split(/[:(]/)[0].trim()}`); // title before ":"/"("
+
+  let r = null;
+  for (const term of terms) {
+    r = await itunesGet(term);
+    if (r) break;
+    await sleep(800);
+  }
   if (!r) return null;
   return {
     artworkUrl: upscaleArtwork(r.artworkUrl100),

@@ -24,10 +24,15 @@ if (!existsSync(join(SRC, 'albums.js'))) {
   console.warn('WARNING: src/albums.js missing — run `npm run build` first.');
 }
 
+// albums.json is a build-time artifact (carries the _ok resume marker); the
+// runtime only reads albums.js. Keep it out of the shipped app.
+const SKIP = new Set(['albums.json']);
+
 const zip = new AdmZip();
 let count = 0;
 for (const file of walk(SRC)) {
   const rel = relative(SRC, file).split(sep).join('/');
+  if (SKIP.has(rel)) continue;
   zip.addLocalFile(file, dirname(rel) === '.' ? '' : dirname(rel));
   count += 1;
 }

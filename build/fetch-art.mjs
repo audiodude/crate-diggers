@@ -9,8 +9,8 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { searchItunes, buildLinks } from './lib/itunes.mjs';
-import { spotifyId } from './lib/wikidata.mjs';
-import { downloadImage, resizeCover, placeholderCover } from './lib/covers.mjs';
+import { mbReleaseGroup } from './lib/musicbrainz.mjs';
+import { downloadImage, resizeCover, placeholderCover, caaUrl } from './lib/covers.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'src');
@@ -35,14 +35,27 @@ async function buildAlbum(row) {
     console.warn(`  ${row.id}: iTunes failed: ${e.message}`);
   }
 
-  // Cover: iTunes artwork, else placeholder.
+  // Cover: iTunes artwork first, then Cover Art Archive (via MusicBrainz), else
+  // a placeholder.
   let gotCover = false;
   if (itunes?.artworkUrl) {
     try {
       await resizeCover(await downloadImage(itunes.artworkUrl), imgPath);
       gotCover = true;
     } catch (e) {
-      console.warn(`  ${row.id}: cover download failed: ${e.message}`);
+      console.warn(`  ${row.id}: iTunes cover download failed: ${e.message}`);
+    }
+  }
+  if (!gotCover) {
+    const mbid = await mbReleaseGroup(row.artist, row.title);
+    if (mbid) {
+      try {
+        await resizeCover(await downloadImage(caaUrl(mbid, 500)), imgPath);
+        gotCover = true;
+        console.log(`  ${row.id}: cover from Cover Art Archive`);
+      } catch (e) {
+        console.warn(`  ${row.id}: CAA cover failed: ${e.message}`);
+      }
     }
   }
   if (!gotCover) {
@@ -50,10 +63,9 @@ async function buildAlbum(row) {
     console.warn(`  ${row.id}: using placeholder cover`);
   }
 
-  // Best-effort Spotify id (rate-limited; never fatal).
-  const spId = await spotifyId(row.artist, row.title, row.qid);
-
-  out.links = buildLinks(row, { spotifyId: spId, appleUrl: itunes?.appleUrl });
+  // Apple link comes from iTunes; Spotify + YouTube are search URLs (Spotify
+  // gives no public id API, and a search URL beats risking a wrong direct link).
+  out.links = buildLinks(row, { appleUrl: itunes?.appleUrl });
   out._ok = gotCover; // resume marker: real cover fetched
   return out;
 }
