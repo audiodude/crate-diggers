@@ -1,0 +1,5 @@
+node_modules/
+src/img/
+src/albums.json
+*.xdc
+.DS_Store
