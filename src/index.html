@@ -10,7 +10,10 @@
     <div id="app"><div class="loading">Loading the crate…</div></div>
 
     <!-- Classic scripts, executed in order (no ES modules — maximal WebXDC host
-         compatibility): shim (no-op under a real host) → albums → reducer → app. -->
+         compatibility). webxdc.js is PROVIDED BY THE MESSENGER at runtime and
+         sets window.webxdc (it must NOT be bundled into the .xdc); it 404s
+         harmlessly in a plain browser, where webxdc-shim.js then takes over. -->
+    <script src="webxdc.js"></script>
     <script src="webxdc-shim.js"></script>
     <script src="albums.js"></script>
     <script src="game.js"></script>
