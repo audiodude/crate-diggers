@@ -29,10 +29,17 @@ Runtime is offline, but the build needs network to fetch cover art + links.
 
 ```sh
 npm install
-npm run icon     # generate src/icon.png (one-time; already committed)
-npm run build    # deck.json -> src/albums.json + src/albums.js + src/img/*.jpg
-npm test         # unit-tests the pure reducer (incl. order-independence)
-npm run pack     # -> crate-diggers.xdc
+npm run build    # the whole thing: fetch art + links, then zip -> crate-diggers.xdc
+```
+
+That's the deploy artifact — see [Deploy](#deploy) below. `build` runs two steps
+you can also invoke on their own:
+
+```sh
+npm run art      # deck.json -> src/albums.json + src/albums.js + src/img/*.jpg
+npm run pack     # zip src/ -> crate-diggers.xdc
+npm test         # (optional) unit-tests the pure reducer (incl. order-independence)
+npm run icon     # (optional) regenerate src/icon.png — already committed
 ```
 
 - **Artwork + the direct Apple Music link** come from the iTunes Search API (no
@@ -42,12 +49,25 @@ npm run pack     # -> crate-diggers.xdc
   build never fails on one row.
 - **Spotify and YouTube Music** links are search URLs (no reliable public id
   lookup); Apple is direct. Every album always has all three.
-- The build is **resumable** — covers already fetched are skipped, so if iTunes
-  rate-limits you, just run `npm run build` again until it reports 0 placeholders.
+- The art step is **resumable** — covers already fetched are skipped, so if
+  iTunes rate-limits you, just run `npm run build` again until it reports 0
+  placeholders.
 
-Edit `deck.json` and re-run `npm run build && npm run pack` to change the deck.
+Edit `deck.json` and re-run `npm run build` to rebuild the deck and repack.
 
-### Browse the deck
+## Deploy
+
+A WebXDC app has **no server** — "deploying" just means handing people the `.xdc`:
+
+1. `npm run build` → **`crate-diggers.xdc`** (~2 MB) at the project root.
+2. In Delta Chat, open the group (or your own "Saved Messages"), attach
+   `crate-diggers.xdc` like any file, and send it.
+3. Everyone taps it to launch and play; game state syncs as ordinary chat
+   messages. No install, no accounts, works offline.
+
+Ship a new version by re-running `npm run build` and sending the new `.xdc`.
+
+## Browse the deck
 
 ```sh
 npm run gallery    # generates gallery.html from src/albums.json
@@ -56,8 +76,9 @@ npm run gallery    # generates gallery.html from src/albums.json
 `npm run gallery` writes **`gallery.html`** at the project root — a visual contact
 sheet of all 124 covers, grouped by year and color-coded by genre (rock / pop /
 hip-hop / gem). Open it in a browser to eyeball the whole deck; tap any cover to
-open the album in Apple Music. It points at `src/img/`, so run `npm run build`
-first. It's a browse tool only — it is never packed into the `.xdc`.
+open the album in Apple Music. It points at `src/img/`, so run `npm run art` (or
+`npm run build`) first. It's a browse tool only — it is never packed into the
+`.xdc`.
 
 ## Playtest with a simulated friend
 
@@ -68,7 +89,7 @@ You don't need Delta Chat or a second phone to test multiplayer.
 Simulates several peers, each in its own browser tab, talking to one another:
 
 ```sh
-npm run build           # make sure src/albums.js exists first
+npm run art             # make sure src/albums.js exists first
 npx webxdc-dev run src
 ```
 
@@ -84,7 +105,7 @@ between tabs of the same browser via `localStorage`. Identity is per-tab, so two
 tabs are two different players sharing one game:
 
 ```sh
-npm run build
+npm run art
 npx serve src      # or: python3 -m http.server -d src 8000
 ```
 

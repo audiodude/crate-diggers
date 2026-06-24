@@ -5,10 +5,11 @@
   "type": "module",
   "description": "Crate Diggers — a WebXDC music-taste guessing game for Delta Chat",
   "scripts": {
-    "build": "node build/fetch-art.mjs",
+    "art": "node build/fetch-art.mjs",
+    "pack": "node build/pack.mjs",
+    "build": "npm run art && npm run pack",
     "icon": "node build/make-icon.mjs",
     "gallery": "node build/make-gallery.mjs",
-    "pack": "node build/pack.mjs",
     "test": "node --test"
   },
   "engines": {
