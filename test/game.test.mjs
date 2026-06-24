@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { reduce, phaseOf } from '../src/game.js';
+import '../src/game.js'; // classic script: defines globalThis.CrateGame
+const { reduce, phaseOf } = globalThis.CrateGame;
 
 const hello = (addr, name) => ({ payload: { type: 'hello', addr, name } });
 const start = (roundId, by, subject, slate) => ({

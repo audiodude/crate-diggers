@@ -1,5 +1,8 @@
 // Crate Diggers — UI + WebXDC wiring (all effects live here; game.js stays pure).
-import { reduce, phaseOf } from './game.js';
+// Classic script: game.js (loaded before this) put the reducer on window.
+// Wrapped in an IIFE so its top-level names don't collide in the shared global.
+(function () {
+const { reduce, phaseOf } = window.CrateGame;
 
 const xdc = window.webxdc;
 const ALBUMS = window.ALBUMS || [];
@@ -314,3 +317,4 @@ xdc.setUpdateListener((u) => {
 }, 0);
 sendHello();
 render();
+})();

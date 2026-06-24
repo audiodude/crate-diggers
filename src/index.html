@@ -9,13 +9,11 @@
   <body>
     <div id="app"><div class="loading">Loading the crate…</div></div>
 
-    <!-- Order matters: shim (no-op under a real host) → albums data → reducer → app. -->
+    <!-- Classic scripts, executed in order (no ES modules — maximal WebXDC host
+         compatibility): shim (no-op under a real host) → albums → reducer → app. -->
     <script src="webxdc-shim.js"></script>
     <script src="albums.js"></script>
-    <script type="module">
-      import * as game from './game.js';
-      window.CrateGame = game;
-      import('./app.js');
-    </script>
+    <script src="game.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

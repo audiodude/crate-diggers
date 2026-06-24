@@ -14,6 +14,9 @@
 // Works in both the browser (script tag) and Node (ESM import) via the shim at
 // the bottom of the file.
 
+// Wrapped in an IIFE so nothing leaks to the global scope except CrateGame —
+// classic <script>s share one global, and app.js declares its own `reduce`.
+(function (root) {
 function reduce(updates) {
   const roster = new Map(); // addr -> name
   const rmap = new Map(); // roundId -> round object
@@ -96,9 +99,7 @@ function scoreFor(rounds, seen) {
   return scores;
 }
 
-const api = { reduce, phaseOf, scoreFor };
-
-// Dual export: browser global + Node ESM.
-if (typeof window !== 'undefined') window.CrateGame = api;
-export { reduce, phaseOf, scoreFor };
-export default api;
+// Expose one global — works in the browser (classic <script>) and in Node (the
+// unit tests import this file for its side effect, then read globalThis.CrateGame).
+root.CrateGame = { reduce, phaseOf, scoreFor };
+})(typeof window !== 'undefined' ? window : globalThis);

@@ -67,18 +67,19 @@ update gossip, including out-of-order delivery.
 
 ### Option B — two browser tabs (quick & dirty)
 
-Opening `src/index.html` directly loads a built-in **local shim** for
-`window.webxdc` that relays updates between tabs of the same browser via
-`localStorage`:
+The app loads a built-in **local shim** for `window.webxdc` that relays updates
+between tabs of the same browser via `localStorage`. Identity is per-tab, so two
+tabs are two different players sharing one game:
 
 ```sh
 npm run build
-# serve the folder so module scripts load (file:// blocks ES modules):
 npx serve src      # or: python3 -m http.server -d src 8000
 ```
 
-Open the URL in two tabs (or two windows). Each tab is a different "player." It's
-cruder than `webxdc-dev` but enough to click through a full round solo.
+Open the served URL in two tabs. To pin who's who, add `?as=`:
+`…/?as=alice` in one tab and `…/?as=bob` in the other. Start a round in one,
+guess in the other, reveal, watch the score. Cruder than `webxdc-dev` but enough
+to click through a full round yourself.
 
 ### Option C — real Delta Chat
 
