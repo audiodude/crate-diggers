@@ -4,3 +4,4 @@ src/albums.json
 *.xdc
 .DS_Store
 src/albums.js
+gallery.html

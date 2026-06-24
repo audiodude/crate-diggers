@@ -47,6 +47,18 @@ npm run pack     # -> crate-diggers.xdc
 
 Edit `deck.json` and re-run `npm run build && npm run pack` to change the deck.
 
+### Browse the deck
+
+```sh
+npm run gallery    # generates gallery.html from src/albums.json
+```
+
+`npm run gallery` writes **`gallery.html`** at the project root — a visual contact
+sheet of all 124 covers, grouped by year and color-coded by genre (rock / pop /
+hip-hop / gem). Open it in a browser to eyeball the whole deck; tap any cover to
+open the album in Apple Music. It points at `src/img/`, so run `npm run build`
+first. It's a browse tool only — it is never packed into the `.xdc`.
+
 ## Playtest with a simulated friend
 
 You don't need Delta Chat or a second phone to test multiplayer.
