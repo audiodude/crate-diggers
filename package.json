@@ -1,9 +1,11 @@
 {
   "name": "crate-diggers",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Crate Diggers — a WebXDC music-taste guessing game for Delta Chat",
+  "author": "Travis Briggs <audiodude@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "art": "node build/fetch-art.mjs",
     "pack": "node build/pack.mjs",

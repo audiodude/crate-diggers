@@ -163,3 +163,10 @@ docs/superpowers/    # design spec + implementation plan
 - The deck's "top-selling rock/pop/hip-hop per year" is a hand-resolved proxy
   from Billboard year-end / Wikipedia charts, not literal sales — see
   `docs/superpowers/specs/`.
+
+## License
+
+[MIT](LICENSE) © Travis Briggs. Album cover thumbnails are fetched at build time
+from the iTunes Search API / Cover Art Archive and remain the property of their
+respective rights holders; they're used here for identification in a
+non-commercial party game.
