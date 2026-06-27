@@ -91,3 +91,17 @@ ul { list-style: none; margin: 0; padding: 0; }
 .sheet h2 { margin: 12px 0 0; } .sheet p { color: var(--muted); margin: 2px 0 14px; }
 .sheet .ghost { margin-top: 14px; width: 100%; }
 .sheet .listen-row { justify-content: center; }
+.sheet textarea {
+  width: 100%; box-sizing: border-box; min-height: 130px; margin-top: 4px; resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.4;
+  color: var(--ink); background: var(--card2); border: 1px solid var(--card2); border-radius: 10px; padding: 10px;
+}
+.sheet .err { color: #ff6b6b; margin: 10px 0 0; font-size: 13px; }
+.sheet .row { margin-top: 14px; }
+.sheet .row .ghost { margin-top: 0; }
+.score-tools { display: flex; align-items: center; gap: 6px; margin: 12px 2px 0; font-size: 13px; }
+.score-tools .lbl { color: var(--muted); }
+.score-tools button {
+  background: none; border: none; border-radius: 8px; padding: 4px 8px;
+  color: var(--accent2); font-size: 13px; font-weight: 600;
+}

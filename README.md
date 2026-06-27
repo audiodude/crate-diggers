@@ -5,7 +5,7 @@ you know your friends' taste in music?*
 
 Each round one player is the **digger**. The app shows them 4 random albums from
 a 124-album deck (1985–2015); they secretly pick the one they'd most enjoy.
-Everyone else guesses which one. Correct guess = **+1**. Scores pile up forever.
+Everyone else guesses which one. Correct guess = **+100**. Scores pile up forever.
 The deck mixes the era's chart-toppers with cult deep cuts, so some rounds are
 gimmes and some are wild cards.
 
@@ -18,8 +18,9 @@ async (a round can sit for hours), and across any number of people.
 1. Anyone taps **New Round** and picks the digger (yourself is allowed).
 2. The digger sees 4 covers and secretly taps their pick — held on their device,
    **never sent** until they reveal.
-3. Everyone else taps their guess (hidden from others in the UI).
-4. The digger taps **Reveal** → the pick is shown and correct guessers score +1.
+3. Everyone else taps their guess — guesses show up **live** for the whole group
+   as they roll in (only the digger's own pick stays secret until reveal).
+4. The digger taps **Reveal** → the pick is shown and correct guessers score +100.
 5. Tap any cover for an **album detail** card with Spotify / Apple Music /
    YouTube Music links — great for discovering the obscure ones.
 
@@ -66,6 +67,14 @@ A WebXDC app has **no server** — "deploying" just means handing people the `.x
    messages. No install, no accounts, works offline.
 
 Ship a new version by re-running `npm run build` and sending the new `.xdc`.
+
+**Carrying scores across versions.** Each `.xdc` you send is a *separate* game
+instance with its own state — the new build starts with an empty scoreboard, and
+WebXDC gives no way to auto-read the old instance's state. To keep a running
+tally, use the **Save scores** / **Load scores** buttons (lobby and results):
+*Save* copies the current scoreboard as a small blob; paste it into the new
+version with *Load* and those points are seeded in. Imports are idempotent (each
+export is tagged, so loading the same blob twice never double-counts).
 
 ## Browse the deck
 
