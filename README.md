@@ -71,8 +71,8 @@ Ship a new version by re-running `npm run build` and sending the new `.xdc`.
 **Carrying scores across versions.** Each `.xdc` you send is a *separate* game
 instance with its own state — the new build starts with an empty scoreboard, and
 WebXDC gives no way to auto-read the old instance's state. To keep a running
-tally, use the **Save scores** / **Load scores** buttons (lobby and results):
-*Save* copies the current scoreboard as a small blob; paste it into the new
+tally, use the compact **Scores: Load · Export** row (lobby and results):
+*Export* copies the current scoreboard as a small blob; paste it into the new
 version with *Load* and those points are seeded in. Imports are idempotent (each
 export is tagged, so loading the same blob twice never double-counts).
 
@@ -156,10 +156,10 @@ docs/superpowers/    # design spec + implementation plan
   order and replays history to late joiners, so state is rebuilt from scratch on
   every update and never depends on arrival order. A test feeds the same log in
   several shuffled orders and asserts identical scores.
-- **The digger's pick is the only real secret** and is never broadcast before
-  reveal. Guesses are broadcast but UI-hidden; a determined packet-sniffer could
-  peek, which is fine for a friends' game. (A cryptographic commit–reveal would
-  close that — intentionally out of scope.)
+- **The digger's pick is the only secret.** It's held on the digger's device and
+  never broadcast until they reveal, so even a packet-sniffer can't see it early.
+  Guesses are fully public — broadcast *and* shown live to everyone as they roll
+  in; correct ones score at reveal.
 - The deck's "top-selling rock/pop/hip-hop per year" is a hand-resolved proxy
   from Billboard year-end / Wikipedia charts, not literal sales — see
   `docs/superpowers/specs/`.
